@@ -1,3 +1,6 @@
+*
+!*.*
+.DS_store
 run.py
 setup.py
 *.in
