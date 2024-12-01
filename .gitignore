@@ -4,5 +4,6 @@
 .DS_store
 run.py
 setup.py
+2015/
 *.in
 *.txt
