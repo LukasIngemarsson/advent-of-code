@@ -4,6 +4,7 @@
 .DS_store
 run.py
 setup.py
+library.cpp
 2015/
 *.in
 *.txt
