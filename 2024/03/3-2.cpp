@@ -4,11 +4,11 @@ using namespace std;
 int main() {
     cin.tie(0)->sync_with_stdio(false);
 
-    std::string file((istreambuf_iterator<char>(cin)), istreambuf_iterator<char>());
-    std::regex mul_format(R"(mul\((\d+),(\d+)\)|do\(\)|don't\(\))");
+    string file((istreambuf_iterator<char>(cin)), istreambuf_iterator<char>());
+    regex mul_format(R"(mul\((\d+),(\d+)\)|do\(\)|don't\(\))");
     
-    auto start = std::sregex_iterator(file.begin(), file.end(), mul_format);
-    auto end = std::sregex_iterator();
+    auto start = sregex_iterator(file.begin(), file.end(), mul_format);
+    auto end = sregex_iterator();
 
     int ans{}, a, b;
     bool do_mul = true;
