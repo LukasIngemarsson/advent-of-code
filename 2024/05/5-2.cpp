@@ -26,10 +26,7 @@ int main() {
     } 
     int ans{};
     auto update_comp = [&] (int a, int b) {
-        if (rules[a].find(b) != rules[a].end()) {
-            return true;
-        }
-        return false;
+        return rules[a].find(b) != rules[a].end();
     };
     do {
         vector<int> update = split_to_ints(line, ',');
@@ -40,6 +37,5 @@ int main() {
         }
     } while (cin >> line);
     cout << ans;
-
     return 0;
 }
