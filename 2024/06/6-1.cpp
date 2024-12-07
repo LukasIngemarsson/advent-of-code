@@ -25,6 +25,7 @@ int main() {
     set<pair<int, int>> visited;
     pair<int, int> pos = start_pos;
     int dir_idx = 0;
+
     while (true) {
         visited.insert(pos);
         int r = pos.first + dirs[dir_idx].first;

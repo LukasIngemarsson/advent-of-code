@@ -6,23 +6,34 @@ vector<string> grid;
 int rows, cols;
 
 set<pair<int, int>> obstructs;
-set<tuple<int, int, int>> glob_visited;
-set<tuple<int, int, int>> loc_visited;
+set<tuple<int, int, int>> glob_visited, loc_visited;
 
 bool in_visited(tuple<int, int, int> t) {
     return glob_visited.find(t) != glob_visited.end() || loc_visited.find(t) != loc_visited.end();
 }
 
-int get_next_idx(int idx) {
+bool tile_visited(int r, int c) {
+    for (int i = 0; i < 4; ++i) {
+        if (glob_visited.find({r, c, i}) != glob_visited.end()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+int get_next_dir(int idx) {
     return (idx + 1) % 4;
 }
 
-bool search(pair<int, int> pos, int dir_idx=0, bool check_obstructs=true) {
+bool search(pair<int, int> pos, int dir_idx=0, bool global=true) {
     while (true) {
-        if (check_obstructs) {
+        if (global) {
             glob_visited.insert({pos.first, pos.second, dir_idx});
         }
         else {
+            if (in_visited({pos.first, pos.second, dir_idx})) {
+                return true;
+            }
             loc_visited.insert({pos.first, pos.second, dir_idx});
         }
         int r = pos.first + dirs[dir_idx].first;
@@ -31,24 +42,20 @@ bool search(pair<int, int> pos, int dir_idx=0, bool check_obstructs=true) {
             return false;
         }
         if (grid[r][c] == '#') {
-            dir_idx = get_next_idx(dir_idx);
+            dir_idx = get_next_dir(dir_idx);
             continue;
         }
-        if (check_obstructs) {
+        if (global && !tile_visited(r, c)) {
             grid[r][c] = '#';
-            if (search(pos, get_next_idx(dir_idx), false)) {
+            if (search(pos, get_next_dir(dir_idx), false)) {
                 obstructs.insert({r, c});
             }
             grid[r][c] = '.';
             loc_visited.clear();
         }
-        else if (in_visited({r, c, dir_idx})) {
-            return true;
-        }
         pos = {r, c};
     }
 }
-
 
 int main() {
     cin.tie(0)->sync_with_stdio(false);
@@ -74,24 +81,6 @@ int main() {
         obstructs.erase(start_pos);
     }
     cout << obstructs.size() << endl;
-
-    for (int r = 0; r < rows; ++r) {
-        for (int c = 0; c < cols; ++c) {
-            if (make_pair(r, c) == start_pos) {
-                cout << 'S';
-            }
-            // else if (glob_visited.find({r, c}) != glob_visited.end()) {
-            //     cout << 'X';
-            // }
-            else if (obstructs.find({r, c}) != obstructs.end()) {
-                cout << '0';
-            }
-            else {
-                cout << grid[r][c];
-            }
-        }
-        cout << endl;
-    }
     
     return 0;
 }
