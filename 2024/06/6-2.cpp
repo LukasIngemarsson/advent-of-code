@@ -35,9 +35,11 @@ bool search(pair<int, int> pos, int dir_idx=0, bool check_obstructs=true) {
             continue;
         }
         if (check_obstructs) {
+            grid[r][c] = '#';
             if (search(pos, get_next_idx(dir_idx), false)) {
                 obstructs.insert({r, c});
             }
+            grid[r][c] = '.';
             loc_visited.clear();
         }
         else if (in_visited({r, c, dir_idx})) {
@@ -46,6 +48,7 @@ bool search(pair<int, int> pos, int dir_idx=0, bool check_obstructs=true) {
         pos = {r, c};
     }
 }
+
 
 int main() {
     cin.tie(0)->sync_with_stdio(false);
@@ -77,6 +80,9 @@ int main() {
             if (make_pair(r, c) == start_pos) {
                 cout << 'S';
             }
+            // else if (glob_visited.find({r, c}) != glob_visited.end()) {
+            //     cout << 'X';
+            // }
             else if (obstructs.find({r, c}) != obstructs.end()) {
                 cout << '0';
             }
