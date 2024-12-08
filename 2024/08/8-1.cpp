@@ -35,7 +35,6 @@ int main() {
             int ir = locs[i].first, ic = locs[i].second;
             for (int j = i + 1; j < locs.size(); ++j) {
                 int jr = locs[j].first, jc = locs[j].second;
-
                 int diffr = jr - ir;
                 int diffc = jc - ic;
                 if (ir - diffr >= 0 && ir - diffr < rows && ic - diffc >= 0 && ic - diffc < cols) {

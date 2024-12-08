@@ -18,6 +18,7 @@ int main() {
     string file((istreambuf_iterator<char>(cin)), istreambuf_iterator<char>());
     vector<string> grid = split(file, "\n");
     int rows = grid.size(), cols = grid.front().size();
+
     unordered_map<char, vector<pair<int, int>>> ant_locs;
     for (int r = 0; r < rows; ++r) {
         for (int c = 0; c < cols; ++c) {
@@ -34,7 +35,6 @@ int main() {
             int ir = locs[i].first, ic = locs[i].second;
             for (int j = i + 1; j < locs.size(); ++j) {
                 int jr = locs[j].first, jc = locs[j].second;
-
                 int diffr = jr - ir;
                 int diffc = jc - ic;
                 int roff{}, coff{};
