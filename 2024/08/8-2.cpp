@@ -28,7 +28,7 @@ int main() {
             ant_locs[grid[r][c]].push_back({r, c});
         }
     }
-    set<pair<int, int>> antidotes;
+    set<pair<int, int>> antinodes;
     for (auto& [_, locs] : ant_locs) {
         sort(locs.begin(), locs.end());
         for (int i = 0; i < locs.size(); ++i) {
@@ -39,20 +39,20 @@ int main() {
                 int diffc = jc - ic;
                 int roff{}, coff{};
                 while (ir - roff >= 0 && ir - roff < rows && ic - coff >= 0 && ic - coff < cols) {
-                    antidotes.insert({ir - roff, ic - coff});
+                    antinodes.insert({ir - roff, ic - coff});
                     roff += diffr;
                     coff += diffc;
                 }
                 roff = 0, coff = 0;
                 while (jr + roff >= 0 && jr + roff < rows && jc + coff >= 0 && jc + coff < cols) {
-                    antidotes.insert({jr + roff, jc + coff});
+                    antinodes.insert({jr + roff, jc + coff});
                     roff += diffr;
                     coff += diffc;
                 }
             }
         }
     }
-    cout << antidotes.size() << endl;
+    cout << antinodes.size() << endl;
 
     return 0;
 }
