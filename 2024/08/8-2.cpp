@@ -14,8 +14,8 @@ vector<string> split(string& s, string delim=" ") {
 
 int main() {
     cin.tie(0)->sync_with_stdio(false);
+
     string file((istreambuf_iterator<char>(cin)), istreambuf_iterator<char>());
-    
     vector<string> grid = split(file, "\n");
     int rows = grid.size(), cols = grid.front().size();
     unordered_map<char, vector<pair<int, int>>> ant_locs;
