@@ -21,11 +21,11 @@ int main() {
 
         int area{}, perim{};
         while (!q.empty()) {
-            pair<int, int> p = q.front(); 
+            auto [r, c] = q.front();
             q.pop();
             ++area;
             for (auto& [dr, dc] : dirs) {
-                int nr = p.first + dr, nc = p.second + dc;
+                int nr = r + dr, nc = c + dc;
                 if (!(nr >= 0 && nr < rows && nc >= 0 && nc < cols) || grid[nr][nc] != ptype) {
                     ++perim;
                 }

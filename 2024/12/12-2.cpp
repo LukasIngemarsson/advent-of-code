@@ -22,15 +22,15 @@ int main() {
 
         int area{}, sides{};
         while (!q.empty()) {
-            pair<int, int> p = q.front(); 
+            auto [r, c] = q.front(); 
             q.pop();
             ++area;
             for (auto& [dr, dc] : dirs) {
-                int nr = p.first + dr, nc = p.second + dc;
+                int nr = r + dr, nc = c + dc;
                 if (!(nr >= 0 && nr < rows && nc >= 0 && nc < cols) || grid[nr][nc] != ptype) {
-                    tile_sides.insert({p.first, p.second, dr, dc});
-                    if (!(tile_sides.find({p.first + dc, p.second + dr, dr, dc}) != tile_sides.end() ||
-                        tile_sides.find({p.first - dc, p.second - dr, dr, dc}) != tile_sides.end())) {
+                    tile_sides.insert({r, c, dr, dc});
+                    if (!(tile_sides.find({r + dc, c + dr, dr, dc}) != tile_sides.end() ||
+                        tile_sides.find({r - dc, c - dr, dr, dc}) != tile_sides.end())) {
                         ++sides;
                     }
                 }
