@@ -8,7 +8,7 @@ def p1(lines):
     dial = 50
     cnt = 0
     for line in lines:
-        dir_, turns = line[0], int("".join(line[1:]))
+        dir_, turns = line[0], int(line[1:])
 
         if dir_ == "R":
             dial = (dial + turns) % DIAL_MAX
@@ -16,7 +16,7 @@ def p1(lines):
             dial -= turns
             while dial < DIAL_MIN:
                 dial += DIAL_MAX
-        if dial == 0:
+        if dial == DIAL_MIN:
             cnt += 1
     print(cnt)
 
@@ -28,16 +28,15 @@ def p2(lines):
     dial = 50
     cnt = 0
     for line in lines:
-        dir_, turns = line[0], int("".join(line[1:]))
+        dir_, turns = line[0], int(line[1:])
 
         if dir_ == "R":
             cnt += (dial + turns) // DIAL_MAX
             dial = (dial + turns) % DIAL_MAX
         else:
-            prev_dial = dial
-            dial -= turns
-            if dial < DIAL_MIN and prev_dial == 0:
+            if dial == DIAL_MIN:
                 cnt -= 1
+            dial -= turns
             while dial < DIAL_MIN:
                 dial += DIAL_MAX
                 cnt += 1
