@@ -4,7 +4,9 @@
 .DS_store
 run.py
 setup.py
-2024/library.cpp
+parse_input.cpp
+template.cpp
+template.py
 2015/
 *.in
 *.txt
