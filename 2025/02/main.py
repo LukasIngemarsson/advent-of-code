@@ -3,14 +3,11 @@ import sys
 
 def p1(lines):
     assert len(lines) == 1
-    ranges = [tuple(map(int, rs.split('-'))) for rs in lines[0].split(',')]
+    ranges = [tuple(map(int, rstr.split('-'))) for rstr in lines[0].split(',')]
 
     ans = 0
     for a, b in ranges:
         for x in range(a, b + 1):
-            if x < 10:
-                continue
-
             xstr = str(x)
 
             if len(xstr) % 2 != 0:
@@ -24,14 +21,11 @@ def p1(lines):
 
 def p2(lines):
     assert len(lines) == 1
-    ranges = [tuple(map(int, rs.split('-'))) for rs in lines[0].split(',')]
+    ranges = [tuple(map(int, rstr.split('-'))) for rstr in lines[0].split(',')]
 
     ans = 0
     for a, b in ranges:
         for x in range(a, b + 1):
-            if x < 10:
-                continue
-
             xstr = str(x)
 
             for seqlen in range(1, len(xstr) // 2 + 1):
