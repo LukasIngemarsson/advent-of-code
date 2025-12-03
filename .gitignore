@@ -2,11 +2,7 @@
 !*.*
 !*/
 .DS_store
-run.py
 setup.py
-parse_input.cpp
-template.cpp
-template.py
 2015/
 *.in
 *.txt
