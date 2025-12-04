@@ -18,7 +18,7 @@ def p1(lines):
                 if oob or (nr == r and nc == c):
                     continue
 
-                if grid[r+dr][c+dc] == PAPER_ROLL:
+                if grid[nr][nc] == PAPER_ROLL:
                     cnt += 1
 
                 if cnt > MAX_ADJ:
@@ -35,7 +35,7 @@ def p1(lines):
 
 
 def p2(lines):
-    grid = [[ch for ch in l] for l in lines]
+    grid = [list(l) for l in lines]
     n, m = len(grid), len(grid[0])
 
     MAX_ADJ = 3
@@ -51,7 +51,7 @@ def p2(lines):
                 if oob or (nr == r and nc == c):
                     continue
 
-                if grid[r+dr][c+dc] == PAPER_ROLL:
+                if grid[nr][nc] == PAPER_ROLL:
                     cnt += 1
 
                 if cnt > MAX_ADJ:
