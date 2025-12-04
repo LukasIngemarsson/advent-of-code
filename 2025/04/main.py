@@ -59,15 +59,15 @@ def p2(lines):
         return True
 
     ans = 0
-    accessable = True
-    while accessable:
-        accessable = False
+    accessible = True
+    while accessible:
+        accessible = False
         for r in range(n):
             for c in range(m):
                 if grid[r][c] == PAPER_ROLL and can_be_accessed(r, c):
                     ans += 1
                     grid[r][c] = 'x'
-                    accessable = True
+                    accessible = True
 
     print(ans)
 
