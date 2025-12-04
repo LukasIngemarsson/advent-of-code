@@ -8,7 +8,7 @@ def p1(lines):
     MAX_ADJ = 3
     PAPER_ROLL = '@'
 
-    def can_be_accessed(r, c):
+    def accessible(r, c):
         cnt = 0
         for dr in range(-1, 1 + 1):
             for dc in range(-1, 1 + 1):
@@ -29,7 +29,7 @@ def p1(lines):
     for r in range(n):
         for c in range(m):
             if grid[r][c] == PAPER_ROLL:
-                ans += can_be_accessed(r, c)
+                ans += accessible(r, c)
 
     print(ans)
 
@@ -41,7 +41,7 @@ def p2(lines):
     MAX_ADJ = 3
     PAPER_ROLL = '@'
 
-    def can_be_accessed(r, c):
+    def accessible(r, c):
         cnt = 0
         for dr in range(-1, 1 + 1):
             for dc in range(-1, 1 + 1):
@@ -59,15 +59,15 @@ def p2(lines):
         return True
 
     ans = 0
-    accessible = True
-    while accessible:
-        accessible = False
+    found_accessible = True
+    while found_accessible:
+        found_accessible = False
         for r in range(n):
             for c in range(m):
-                if grid[r][c] == PAPER_ROLL and can_be_accessed(r, c):
+                if grid[r][c] == PAPER_ROLL and accessible(r, c):
                     ans += 1
                     grid[r][c] = 'x'
-                    accessible = True
+                    found_accessible = True
 
     print(ans)
 

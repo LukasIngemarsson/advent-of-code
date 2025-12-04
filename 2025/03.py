@@ -40,8 +40,7 @@ def p2(lines):
 
 
 if __name__ == "__main__":
-    with sys.stdin as f:
-        lines = [l.strip() for l in f.readlines()]
+    lines = sys.stdin.read().splitlines()
 
     p1(lines)
     p2(lines)
