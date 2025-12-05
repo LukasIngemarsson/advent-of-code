@@ -9,7 +9,6 @@ def p1(lines):
     ans = 0
     for line in lines:
         dir_, turns = line[0], int(line[1:])
-
         if dir_ == "R":
             dial = (dial + turns) % DIAL_MAX
         else:
@@ -29,7 +28,6 @@ def p2(lines):
     ans = 0
     for line in lines:
         dir_, turns = line[0], int(line[1:])
-
         if dir_ == "R":
             ans += (dial + turns) // DIAL_MAX
             dial = (dial + turns) % DIAL_MAX

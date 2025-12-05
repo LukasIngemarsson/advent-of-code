@@ -2,11 +2,11 @@ import sys
 
 
 def p1(lines):
-    grid = lines
-    n, m = len(grid), len(grid[0])
-
     MAX_ADJ = 3
     PAPER_ROLL = '@'
+
+    grid = lines
+    n, m = len(grid), len(grid[0])
 
     def accessible(r, c):
         cnt = 0
@@ -14,13 +14,10 @@ def p1(lines):
             for dc in range(-1, 1 + 1):
                 nr, nc = r + dr, c + dc
                 oob = nr >= n or nr < 0 or nc >= m or nc < 0
-
                 if oob or (nr == r and nc == c):
                     continue
-
                 if grid[nr][nc] == PAPER_ROLL:
                     cnt += 1
-
                 if cnt > MAX_ADJ:
                     return False
         return True
@@ -30,16 +27,15 @@ def p1(lines):
         for c in range(m):
             if grid[r][c] == PAPER_ROLL:
                 ans += accessible(r, c)
-
     print(ans)
 
 
 def p2(lines):
-    grid = [list(l) for l in lines]
-    n, m = len(grid), len(grid[0])
-
     MAX_ADJ = 3
     PAPER_ROLL = '@'
+
+    grid = [list(l) for l in lines]
+    n, m = len(grid), len(grid[0])
 
     def accessible(r, c):
         cnt = 0
@@ -47,13 +43,10 @@ def p2(lines):
             for dc in range(-1, 1 + 1):
                 nr, nc = r + dr, c + dc
                 oob = nr >= n or nr < 0 or nc >= m or nc < 0
-
                 if oob or (nr == r and nc == c):
                     continue
-
                 if grid[nr][nc] == PAPER_ROLL:
                     cnt += 1
-
                 if cnt > MAX_ADJ:
                     return False
         return True
@@ -68,7 +61,6 @@ def p2(lines):
                     ans += 1
                     grid[r][c] = 'x'
                     found_accessible = True
-
     print(ans)
 
 
