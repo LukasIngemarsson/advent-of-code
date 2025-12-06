@@ -4,5 +4,6 @@
 .DS_store
 setup.py
 2015/
+2022/
 *.in
 *.txt
