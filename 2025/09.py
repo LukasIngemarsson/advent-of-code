@@ -15,6 +15,24 @@ def p1(lines):
 
 
 def p2(lines):
+    """
+    unsolved.
+
+    unhandled edge case: polygon does not intersect rectangle,
+    but rectangle is OOB, e.g.,
+        ..............
+        ..#....O......
+        ..............
+        .......#...O..
+        ..............
+        ..#......#....
+        ..............
+        .........#.#..
+        ..............
+
+    though, still missing some other case, as fixing the above
+    could only make my answer lower (but it should be higher)
+    """
     red_tiles = [tuple(map(int, l.split(','))) for l in lines]
     N = len(red_tiles)
 
